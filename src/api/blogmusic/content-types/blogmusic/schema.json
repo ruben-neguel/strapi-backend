@@ -1,24 +1,42 @@
 {
   "kind": "collectionType",
-  "collectionName": "cines",
+  "collectionName": "blogmusics",
   "info": {
-    "singularName": "cine",
-    "pluralName": "cines",
-    "displayName": "cine"
+    "singularName": "blogmusic",
+    "pluralName": "blogmusics",
+    "displayName": "blogmusic"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "titulo": {
+    "Titulo": {
       "type": "string"
     },
     "slug": {
       "type": "uid",
-      "targetField": "titulo"
+      "targetField": "Titulo"
     },
-    "imagen_principal": {
+    "Autor": {
+      "type": "string"
+    },
+    "fecha_publicacion": {
+      "type": "date"
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": [
+        "\"Música\", \"Cine\", \"Arte\", \"Literatura\""
+      ]
+    },
+    "resumen": {
+      "type": "blocks"
+    },
+    "contenido": {
+      "type": "blocks"
+    },
+    "portada": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -37,18 +55,6 @@
         "videos",
         "audios"
       ]
-    },
-    "resumen": {
-      "type": "blocks"
-    },
-    "contenido": {
-      "type": "blocks"
-    },
-    "autor": {
-      "type": "string"
-    },
-    "fecha_publicacion": {
-      "type": "date"
     }
   }
 }

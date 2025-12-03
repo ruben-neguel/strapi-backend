@@ -430,57 +430,21 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiArticuloArticulo extends Struct.CollectionTypeSchema {
-  collectionName: 'articulos';
+export interface ApiBlogcinemaBlogcinema extends Struct.CollectionTypeSchema {
+  collectionName: 'blogcinemas';
   info: {
-    displayName: 'articulo';
-    pluralName: 'articulos';
-    singularName: 'articulo';
+    displayName: 'blogcinema';
+    pluralName: 'blogcinemas';
+    singularName: 'blogcinema';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    contenido: Schema.Attribute.Blocks;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    fecha_publicacion: Schema.Attribute.Date;
-    imagen_principal: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
+    Autor: Schema.Attribute.String;
+    categoria: Schema.Attribute.Enumeration<
+      ['"Cine", "M\u00FAsica", "Arte", "Literatura"']
     >;
-    imagen_seccion: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::articulo.articulo'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    resumen: Schema.Attribute.Blocks;
-    slug: Schema.Attribute.UID<'titulo'>;
-    titulo: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiCineCine extends Struct.CollectionTypeSchema {
-  collectionName: 'cines';
-  info: {
-    displayName: 'cine';
-    pluralName: 'cines';
-    singularName: 'cine';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    autor: Schema.Attribute.String;
     contenido: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -490,16 +454,58 @@ export interface ApiCineCine extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    imagen_principal: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cine.cine'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blogcinema.blogcinema'
+    > &
       Schema.Attribute.Private;
+    portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     resumen: Schema.Attribute.Blocks;
-    slug: Schema.Attribute.UID<'titulo'>;
-    titulo: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'Titulo'>;
+    Titulo: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBlogmusicBlogmusic extends Struct.CollectionTypeSchema {
+  collectionName: 'blogmusics';
+  info: {
+    displayName: 'blogmusic';
+    pluralName: 'blogmusics';
+    singularName: 'blogmusic';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Autor: Schema.Attribute.String;
+    categoria: Schema.Attribute.Enumeration<
+      ['"M\u00FAsica", "Cine", "Arte", "Literatura"']
+    >;
+    contenido: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fecha_publicacion: Schema.Attribute.Date;
+    galeria: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blogmusic.blogmusic'
+    > &
+      Schema.Attribute.Private;
+    portada: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    resumen: Schema.Attribute.Blocks;
+    slug: Schema.Attribute.UID<'Titulo'>;
+    Titulo: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1072,8 +1078,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::articulo.articulo': ApiArticuloArticulo;
-      'api::cine.cine': ApiCineCine;
+      'api::blogcinema.blogcinema': ApiBlogcinemaBlogcinema;
+      'api::blogmusic.blogmusic': ApiBlogmusicBlogmusic;
       'api::home.home': ApiHomeHome;
       'api::navmenu.navmenu': ApiNavmenuNavmenu;
       'plugin::content-releases.release': PluginContentReleasesRelease;
