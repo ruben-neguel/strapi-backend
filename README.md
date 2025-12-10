@@ -58,22 +58,24 @@ El panel de administración estará disponible en:
 
 # 📁 **Estructura del Proyecto**
 
+```plaintext
 strapi-starless-main/
-
 ├── config/             # Configuración de Strapi
 ├── database/           # Archivos de base de datos (dev)
 ├── public/             # Archivos públicos y uploads
 ├── src/
 │   ├── admin/          # Personalización del panel de administración
 │   ├── api/            # Definiciones de API (Cine, Música, etc.)
-│   │   ├── cine/       
-│   │   ├── musica/     
-│   │   ├── noticia/    
-│   │   ├── home/       
-│   │   ├── contact/    
-│   │   └── navmenu/    
+│   │   ├── cine/
+│   │   ├── musica/
+│   │   ├── noticia/
+│   │   ├── home/
+│   │   ├── contact/
+│   │   └── navmenu/
 │   └── extensions/     # Extensiones personalizadas
 └── types/              # Tipos de TypeScript
+```
+
 
 
 
